@@ -1,0 +1,578 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(0.985 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.145 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.96 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.94 0 0);
+  --muted-foreground: oklch(0.35 0 0);
+  --accent: oklch(0.92 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.88 0 0);
+  --input: oklch(0.88 0 0);
+  --ring: oklch(0.45 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.5rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.1 0 0);
+  --foreground: oklch(0.92 0 0);
+  --card: oklch(0.12 0 0);
+  --card-foreground: oklch(0.92 0 0);
+  --popover: oklch(0.12 0 0);
+  --popover-foreground: oklch(0.92 0 0);
+  --primary: oklch(0.92 0 0);
+  --primary-foreground: oklch(0.1 0 0);
+  --secondary: oklch(0.18 0 0);
+  --secondary-foreground: oklch(0.92 0 0);
+  --muted: oklch(0.2 0 0);
+  --muted-foreground: oklch(0.68 0 0);
+  --accent: oklch(0.22 0 0);
+  --accent-foreground: oklch(0.92 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.92 0 0);
+  --border: oklch(0.22 0 0);
+  --input: oklch(0.22 0 0);
+  --ring: oklch(0.5 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.12 0 0);
+  --sidebar-foreground: oklch(0.92 0 0);
+  --sidebar-primary: oklch(0.92 0 0);
+  --sidebar-primary-foreground: oklch(0.1 0 0);
+  --sidebar-accent: oklch(0.18 0 0);
+  --sidebar-accent-foreground: oklch(0.92 0 0);
+  --sidebar-border: oklch(0.22 0 0);
+  --sidebar-ring: oklch(0.5 0 0);
+}
+
+@theme inline {
+  --font-sans: 'Inter', 'Inter Fallback', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-delay-100 {
+  animation-delay: 0.1s;
+}
+
+.animate-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animate-delay-300 {
+  animation-delay: 0.3s;
+}
+
+.animate-delay-400 {
+  animation-delay: 0.4s;
+}
+
+/* Scroll reveal: fade-in + slide-up al entrar en viewport (muy visible, estilo Apple) */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(64px);
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scroll-reveal-in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Hero name: subtle animated gradient */
+@keyframes hero-name-gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.hero-name-gradient {
+  background: linear-gradient(
+    90deg,
+    var(--foreground) 0%,
+    var(--muted-foreground) 12%,
+    var(--foreground) 38%,
+    var(--muted-foreground) 62%,
+    var(--foreground) 88%,
+    var(--muted-foreground) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: hero-name-gradient 6s ease-in-out infinite;
+}
+
+/* About section: lighter gradient, easy to read, professional and "alive" */
+.about-text-gradient {
+  background-image: linear-gradient(
+    90deg,
+    oklch(0.42 0 0) 0%,
+    oklch(0.55 0 0) 12%,
+    oklch(0.42 0 0) 38%,
+    oklch(0.55 0 0) 62%,
+    oklch(0.42 0 0) 88%,
+    oklch(0.55 0 0) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: hero-name-gradient 6s ease-in-out infinite;
+}
+
+.dark .about-text-gradient {
+  background-image: linear-gradient(
+    90deg,
+    oklch(0.96 0 0) 0%,
+    oklch(0.82 0 0) 12%,
+    oklch(0.96 0 0) 38%,
+    oklch(0.82 0 0) 62%,
+    oklch(0.96 0 0) 88%,
+    oklch(0.82 0 0) 100%
+  );
+}
+
+/* Skills cards: borde estático + una sola línea que recorre el borde al hover */
+@keyframes skill-card-line-travel {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.skill-card-outer {
+  position: relative;
+  border-radius: 0.5rem;
+  padding: 2px;
+  background: var(--border);
+  overflow: hidden;
+  transition: box-shadow 0.4s ease;
+}
+
+.skill-card-outer:hover {
+  box-shadow: 0 0 20px -4px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.dark .skill-card-outer:hover {
+  box-shadow: 0 0 24px -4px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Una sola línea (trazo corto) que recorre el borde del cuadro al hover */
+.skill-card-line {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-radius: 0.5rem;
+  overflow: visible;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.skill-card-outer:hover .skill-card-line {
+  opacity: 1;
+}
+
+.skill-card-line rect {
+  fill: none;
+  stroke: var(--foreground);
+  stroke-width: 2;
+  stroke-linecap: butt;
+  stroke-linejoin: miter;
+  stroke-dasharray: 30 70;
+  stroke-dashoffset: 100;
+  animation: skill-card-line-travel 1.5s linear infinite;
+}
+
+.dark .skill-card-line rect {
+  stroke: var(--muted-foreground);
+}
+
+.skill-card-inner {
+  position: relative;
+  z-index: 1;
+  border-radius: calc(0.5rem - 2px);
+  background: var(--background);
+  padding: 1.5rem;
+  height: 100%;
+}
+
+/* Software & Tools pills: gradiente sutil + glow al hover, sin selección de texto */
+.tool-pill {
+  user-select: none;
+  cursor: default;
+  background: linear-gradient(
+    135deg,
+    var(--secondary) 0%,
+    var(--muted) 50%,
+    var(--accent) 100%
+  );
+  border: 1px solid var(--border);
+  transition: border-color 0.2s ease, box-shadow 0.25s ease;
+}
+
+.tool-pill:hover {
+  border-color: var(--muted-foreground);
+  box-shadow: 0 0 16px -2px rgba(0, 0, 0, 0.08);
+}
+
+.dark .tool-pill:hover {
+  border-color: var(--muted-foreground);
+  box-shadow: 0 0 20px -2px rgba(255, 255, 255, 0.06);
+}
+
+/* Tools: glow en palabras clave (speed, quality, reliability) */
+/* Glow en modo claro: halo suave gris (estándar en fondos claros). En oscuro: glow con currentColor. */
+.tools-focus-glow {
+  text-shadow:
+    0 0 12px rgba(0, 0, 0, 0.06),
+    0 0 24px rgba(0, 0, 0, 0.04);
+}
+
+.dark .tools-focus-glow {
+  text-shadow:
+    0 0 14px currentColor,
+    0 0 28px currentColor;
+}
+
+/* Contact title: mismo criterio — suave en claro, glow visible en oscuro */
+.contact-title-glow {
+  text-shadow:
+    0 0 14px rgba(0, 0, 0, 0.06),
+    0 0 28px rgba(0, 0, 0, 0.04);
+}
+
+.dark .contact-title-glow {
+  text-shadow:
+    0 0 16px var(--foreground),
+    0 0 32px var(--foreground);
+}
+
+/* Work Ethic & Philosophy: animaciones por icono */
+@keyframes philosophy-heartbeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.2); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.2); }
+  70% { transform: scale(1); }
+}
+
+@keyframes philosophy-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Rayo: flash más intenso como un relámpago */
+@keyframes philosophy-zap {
+  0%, 68%, 100% { transform: scale(1); opacity: 1; filter: brightness(1); }
+  70% { transform: scale(1.18); opacity: 0.35; filter: brightness(1.8); }
+  74% { transform: scale(1); opacity: 1; filter: brightness(1); }
+}
+
+/* Mensaje: pequeño bounce como notificación entrante */
+@keyframes philosophy-message {
+  0%, 100% { transform: scale(1) translateY(0); }
+  25% { transform: scale(1.12) translateY(-2px); }
+  50% { transform: scale(0.98) translateY(1px); }
+  75% { transform: scale(1.04) translateY(-1px); }
+}
+
+.philosophy-icon-anim {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center;
+}
+
+.philosophy-icon-anim-heart {
+  animation: philosophy-heartbeat 1.2s ease-in-out infinite;
+}
+
+.philosophy-icon-anim-refresh {
+  animation: philosophy-spin 3s linear infinite;
+}
+
+.philosophy-icon-anim-zap {
+  animation: philosophy-zap 2.2s ease-in-out infinite;
+}
+
+.philosophy-icon-anim-message {
+  animation: philosophy-message 2.4s ease-in-out infinite;
+}
+
+/* ========== Resume / Print to PDF (pantalla + impresión) ========== */
+/* Títulos de sección: barra lateral + mayúsculas */
+.resume-print-section-title {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.4rem;
+  padding-left: 0.75rem;
+  border-left: 4px solid var(--foreground);
+  border-bottom: 1px solid var(--border);
+}
+
+.resume-print-header-bar {
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--foreground);
+}
+
+/* Ajustes para impresión: estética tipo CV */
+@media print {
+  .no-print,
+  .resume-print-page .no-print {
+    display: none !important;
+  }
+
+  body,
+  .resume-print-page {
+    background: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .resume-print-content {
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  .resume-print-name {
+    font-size: 1.75rem !important;
+    color: #111 !important;
+  }
+
+  .resume-print-subtitle {
+    color: #444 !important;
+    letter-spacing: 0.2em !important;
+  }
+
+  /* Barra de contacto: fondo gris suave que sí imprime */
+  .resume-print-contact-strip {
+    background: #f0f0f0 !important;
+    border: 1px solid #ddd !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .resume-print-contact-strip p {
+    color: #333 !important;
+  }
+
+  /* Títulos de sección: barra izquierda negra */
+  .resume-print-section-title {
+    color: #333 !important;
+    border-left-color: #111 !important;
+    border-bottom-color: #ddd !important;
+  }
+
+  .resume-print-body,
+  .resume-print-body * {
+    color: inherit;
+  }
+
+  .resume-print-content .text-muted-foreground,
+  .resume-print-content [class*="muted"] {
+    color: #444 !important;
+  }
+
+  .resume-print-content .border-border,
+  .resume-print-edu-item {
+    border-color: #ccc !important;
+  }
+
+  /* Caja destacada (Philosophy) */
+  .resume-print-highlight-box {
+    background: #f5f5f5 !important;
+    border-color: #ddd !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Dejar que todo fluya; así Contact queda al final de la pág 2 en vez de saltar a una 3ª. */
+  .resume-print-section {
+    page-break-inside: auto;
+  }
+
+  .resume-print-header {
+    page-break-after: avoid;
+  }
+
+  /* Espaciado equilibrado: 2 páginas llenas, sin quedar apretado ni hueco al final */
+  .resume-print-content {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .resume-print-header-bar {
+    margin-bottom: 0.75rem !important;
+    padding-bottom: 0.45rem !important;
+  }
+
+  .resume-print-contact-strip {
+    margin-top: 0.55rem !important;
+    padding-top: 0.55rem !important;
+    padding-bottom: 0.55rem !important;
+  }
+
+  .resume-print-section {
+    margin-bottom: 0.72rem !important;
+  }
+
+  .resume-print-section-title {
+    margin-bottom: 0.48rem !important;
+    padding-bottom: 0.3rem !important;
+  }
+
+  .resume-print-body {
+    padding-left: 0.75rem !important;
+  }
+
+  .resume-print-highlight-box {
+    padding: 0.45rem 0.55rem !important;
+    margin-top: 0.35rem !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  .resume-print-two-cols {
+    gap: 0.25rem 1rem !important;
+  }
+
+  .resume-print-edu-item {
+    margin-bottom: 0.48rem !important;
+    padding-top: 0.3rem !important;
+    padding-bottom: 0.3rem !important;
+  }
+
+  .resume-print-content p,
+  .resume-print-content li {
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .resume-print-content .space-y-4 > * + * {
+    margin-top: 0.4rem !important;
+  }
+
+  .resume-print-content .space-y-6 > * + * {
+    margin-top: 0.55rem !important;
+  }
+
+  @page {
+    size: A4;
+    margin: 1cm;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
