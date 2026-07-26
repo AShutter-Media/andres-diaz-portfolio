@@ -3,7 +3,6 @@
 import { useLanguage } from "@/lib/language-context";
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
   const { t } = useLanguage();
 
   return (
@@ -12,7 +11,7 @@ export function Footer() {
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
             <a href="https://www.ashuttermedia.com" target="_blank" rel="noopener noreferrer" className="text-foreground tools-focus-glow hover:opacity-90 transition-opacity">
-              © {currentYear} Andres Diaz.
+              © 2027 Andres Diaz.
             </a>{" "}{t("footer.rights")}
           </p>
           <a
